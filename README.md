@@ -1,27 +1,16 @@
-# DesafioTotvsFrontend
+# Desafio TOTVS - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.10.
+Bem-vindo ao repositório do Desafio TOTVS - Frontend. Este projeto consiste em uma interface de usuário desenvolvida em Angular 15, utilizando a biblioteca PO UI. A aplicação se integra com a API de clientes disponibilizada no backend.
 
-## Development server
+Para o projeto Backend acesse essa URL: https://github.com/joaoaugustoma/desafio-totvs-backend
+****
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Requisitos
+1. Angular CLI (versão 15)
+2. PO UI
 
-## Code scaffolding
+## Configuração
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Clone o repositório para seu ambiente local.
+2. Instale todas as dependências do projeto.
+3. Inicie o projeto angular.
