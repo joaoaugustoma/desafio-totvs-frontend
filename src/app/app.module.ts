@@ -1,22 +1,24 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ClienteListarComponent } from './components/cliente-listar/cliente-listar.component';
-import { ClienteEditarComponent } from './components/cliente-editar/cliente-editar.component';
-import { ClienteComponent } from './components/cliente/cliente.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {ClienteComponent} from './components/cliente/cliente.component';
+import {PoModule} from "@po-ui/ng-components";
+import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClienteListarComponent,
-    ClienteEditarComponent,
     ClienteComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PoModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
