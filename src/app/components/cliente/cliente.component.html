@@ -36,24 +36,22 @@
       </po-tab>
 
       <po-tab p-label="Telefones">
-        <div>
-          <po-container>
-            <div formArrayName="telefones"
-                 *ngFor="let forTelefone of formCriarCliente.get('telefones').controls; let i = index">
-              <div [formGroupName]="i">
-                <po-input
-                  [p-label]="'Telefone ' + (i + 1) + ': '"
-                  formControlName="telefone"
-                  p-icon="po-icon po-icon-telephone"
-                  [p-mask]="'(99) 9 9999-9999'"
-                ></po-input>
-                <po-button p-label="Remover" [p-danger]=true (click)="deleteTelefone(i)"></po-button>
-              </div>
+        <po-container>
+          <div formArrayName="telefones"
+               *ngFor="let forTelefone of formCriarCliente.get('telefones').controls; let i = index">
+            <div [formGroupName]="i">
+              <po-input
+                [p-label]="'Telefone ' + (i + 1) + ': '"
+                formControlName="telefone"
+                p-icon="po-icon po-icon-telephone"
+                [p-mask]="'(99) 9 9999-9999'"
+              ></po-input>
+              <po-button p-label="Remover" [p-danger]=true (click)="deleteTelefone(i)"></po-button>
             </div>
-            <br>
-            <po-button p-label="Adicionar Outro Telefone" (click)="addtelefone()"></po-button>
-          </po-container>
-        </div>
+          </div>
+          <br>
+          <po-button p-label="Adicionar Outro Telefone" (click)="addtelefone()"></po-button>
+        </po-container>
       </po-tab>
 
     </po-tabs>
