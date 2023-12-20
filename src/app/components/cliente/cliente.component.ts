@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ClienteService} from "../../services/cliente.service";
-import {PoTableColumn} from "@po-ui/ng-components";
+import {PoNotificationService, PoTableColumn} from "@po-ui/ng-components";
 import {Cliente} from "../../models/Cliente";
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 
@@ -49,7 +49,7 @@ export class ClienteComponent implements OnInit {
     }
   ];
 
-  constructor(private clienteService: ClienteService, private formBuilder: FormBuilder) {
+  constructor(private clienteService: ClienteService, private formBuilder: FormBuilder, private poNotificationService: PoNotificationService) {
   }
 
   ngOnInit(): void {
@@ -85,6 +85,10 @@ export class ClienteComponent implements OnInit {
       this.listarClientes();
       this.modalCriarCliente.close();
       this.resetForm();
+    }, error => {
+      error.error.forEach((erro: any) => {
+        this.poNotificationService.error(erro.erroMensagem);
+      });
     });
   }
 
