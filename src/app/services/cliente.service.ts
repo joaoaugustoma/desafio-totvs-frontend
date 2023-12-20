@@ -15,11 +15,7 @@ export class ClienteService {
     return this.http.get<Cliente[]>(this.url);
   }
 
-  criar(formData:Object): Observable<Cliente>{
+  salvar(formData:Object): Observable<Cliente>{
     return this.http.post(this.url, formData);
-  }
-
-  editar(formData:Object): Observable<Cliente>{
-    return this.http.put(this.url, formData);
   }
 }

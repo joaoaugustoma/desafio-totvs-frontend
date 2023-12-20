@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ClienteService} from "../../services/cliente.service";
 import {PoTableColumn} from "@po-ui/ng-components";
 import {Cliente} from "../../models/Cliente";
@@ -10,6 +10,7 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./cliente.component.scss']
 })
 export class ClienteComponent implements OnInit {
+  @ViewChild('modalCriarCliente', { static: false }) modalCriarCliente: any;
 
   formCriarCliente: any
 
@@ -80,7 +81,11 @@ export class ClienteComponent implements OnInit {
 
   salvarCliente() {
     const cliente = this.formCriarCliente.value as Cliente;
-    console.log(cliente);
+    this.clienteService.salvar(cliente).subscribe((data: Cliente) => {
+      this.listarClientes();
+      this.modalCriarCliente.close();
+      this.resetForm();
+    });
   }
 
   addtelefone() {
