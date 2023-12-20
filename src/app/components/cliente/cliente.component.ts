@@ -84,7 +84,6 @@ export class ClienteComponent implements OnInit {
     this.clienteService.salvar(cliente).subscribe((data: Cliente) => {
       this.listarClientes();
       this.modalCriarCliente.close();
-      this.resetForm();
     }, error => {
       error.error.forEach((erro: any) => {
         this.poNotificationService.error(erro.erroMensagem);
@@ -106,10 +105,5 @@ export class ClienteComponent implements OnInit {
     return this.formBuilder.group({
       telefone: [telefone],
     });
-  }
-
-  resetForm() {
-    this.formCriarCliente.reset();
-    this.formCriarCliente.setControl('telefones', this.formBuilder.array([this.criarFormInclusaoTelefone('')]));
   }
 }
