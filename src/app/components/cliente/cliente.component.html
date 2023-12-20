@@ -2,14 +2,16 @@
   <div class="header-container">
     <h1>Clientes</h1>
 
-    <div class="create-button-container">
+    <div class="button-container">
       <po-button
         p-label="Criar Cliente"
-        (p-click)="modal.open()"
+        (p-click)="resetForm(); modalCriarCliente.open()"
       ></po-button>
+
       <po-button
         p-label="Buscar"
         (p-click)="listarClientes()"
+        class=""
       ></po-button>
     </div>
   </div>
@@ -24,46 +26,41 @@
     </po-table>
   </div>
 
-  <po-modal #modal>
-
+  <po-modal #modalCriarCliente>
     <form [formGroup]="formCriarCliente">
+
       <po-tabs>
+
         <po-tab p-label="Geral">
           <po-input p-label="Nome" formControlName="nome" p-icon="po-icon-user"></po-input>
-
-          <po-input p-label="Endereço" formControlName="endereco" p-icon="po-icon po-icon-warehouse">
+          <po-input p-label="Endereço" formControlName="endereco" p-icon="po-icon po-icon-pin">
           </po-input>
-
-          <po-input p-label="Bairro" formControlName="bairro" p-icon="po-icon-pin">
+          <po-input p-label="Bairro" formControlName="bairro" p-icon="po-icon-map">
           </po-input>
         </po-tab>
+
         <po-tab p-label="Telefones">
-          <po-container>
-            <po-input p-label="Telefone" formControlName="telefones" p-icon="po-icon-phone">
-            </po-input>
+          <po-button p-label="Adicionar Telefone" (click)="addtelefone()"></po-button>
 
-            <po-button p-label="Adicionar Telefone" (click)="addtelefone()"></po-button>
-
-            <po-table
-              [p-columns]="colunasTelefones"
-              [p-items]="telefones"
-              [p-sort]="false"
-              [p-hide-columns-manager]="true"
-              [p-hide-table-search]="true"
-            >
-              <ng-template p-table-column-template let-telefone>
-                <po-button
-                  (p-click)="deleteTelefone(telefone)"
-                  p-label="Remover"
-                ></po-button>
-              </ng-template>
-            </po-table>
-          </po-container>
+          <div formArrayName="telefones"
+               *ngFor="let forTelefone of formCriarCliente.get('telefones').controls; let i = index">
+            <div [formGroupName]="i">
+              <po-input
+                [p-label]="'Telefone ' + (i + 1) + ': '"
+                formControlName="telefone"
+                p-icon="po-icon po-icon-telephone"
+                [p-mask]="'(99) 9 9999-9999'"
+              ></po-input>
+              <po-button p-label="Remover" [p-danger]=true (click)="deleteTelefone(i)"></po-button>
+            </div>
+          </div>
+          <br>
         </po-tab>
+
       </po-tabs>
 
       <po-button p-label="Salvar" (click)="salvarCliente()"></po-button>
-
     </form>
   </po-modal>
+
 </po-page-default>
