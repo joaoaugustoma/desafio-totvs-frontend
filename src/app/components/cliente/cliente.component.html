@@ -21,12 +21,6 @@
       [p-columns]="colunas"
       [p-items]="clientes"
     >
-      <ng-template p-table-column-template let-cliente>
-        <po-button
-          (p-click)="editarCliente(cliente)"
-          p-label="Editar"
-        ></po-button>
-      </ng-template>
     </po-table>
   </div>
 

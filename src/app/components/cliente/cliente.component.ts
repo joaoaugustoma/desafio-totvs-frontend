@@ -31,20 +31,6 @@ export class ClienteComponent implements OnInit {
           {property: 'telefone', label: 'Telefone'}
         ]
       }
-    },
-    {
-      property: 'acoes',
-      label: 'Ações',
-      type: 'icon',
-      sortable: false,
-      icons: [
-        {
-          action: this.editarCliente.bind(this),
-          icon: 'po-icon-edit',
-          tooltip: 'Editar Cliente',
-          value: 'editar'
-        }
-      ]
     }
   ]
   colunasTelefones: Array<PoTableColumn> = [
@@ -93,10 +79,6 @@ export class ClienteComponent implements OnInit {
     this.clienteService.listar().subscribe((data: Cliente[]) => {
       this.clientes = data;
     });
-  }
-
-  editarCliente(cliente: Cliente) {
-    console.log(cliente);
   }
 
   salvarCliente() {
