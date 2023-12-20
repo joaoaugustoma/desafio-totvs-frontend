@@ -1,0 +1,54 @@
+<po-page-default>
+  <div class="header-container">
+    <h1>Clientes</h1>
+
+    <div class="create-button-container">
+      <po-button
+        p-label="Criar Cliente"
+        (p-click)="modal.open()"
+      ></po-button>
+      <po-button
+        p-label="Buscar"
+        (p-click)="listarClientes()"
+      ></po-button>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="table-container">
+    <po-table
+      [p-columns]="colunas"
+      [p-items]="clientes"
+    >
+    </po-table>
+  </div>
+
+  <po-modal #modal>
+
+    <form [formGroup]="formCriarCliente">
+      <po-tabs>
+        <po-tab p-label="Geral">
+          <po-input p-label="Nome" formControlName="nome" p-icon="po-icon-user"></po-input>
+
+          <po-input p-label="Endereço" formControlName="endereco" p-icon="po-icon po-icon-warehouse">
+          </po-input>
+
+          <po-input p-label="Bairro" formControlName="bairro" p-icon="po-icon-pin">
+          </po-input>
+        </po-tab>
+        <po-tab p-label="Telefones">
+          <po-container>
+            <po-input p-label="Telefone" formControlName="telefones" p-icon="po-icon-phone">
+            </po-input>
+
+            <po-button p-label="Adicionar Telefone" (click)="addtelefone()"></po-button>
+          </po-container>
+        </po-tab>
+      </po-tabs>
+
+      <po-button p-label="Salvar" (click)="salvarCliente()"></po-button>
+
+    </form>
+  </po-modal>
+</po-page-default>
