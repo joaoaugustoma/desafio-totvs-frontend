@@ -3,6 +3,7 @@ import {ClienteService} from "../../services/cliente.service";
 import {PoDialogService, PoTableColumn} from "@po-ui/ng-components";
 import {Cliente} from "../../models/Cliente";
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ClienteTelefone} from "../../models/ClienteTelefone";
 
 @Component({
   selector: 'app-cliente',
@@ -14,6 +15,8 @@ export class ClienteComponent implements OnInit {
   formCriarCliente: FormGroup = new FormGroup({})
 
   clientes: Cliente[] = [];
+
+  telefones: ClienteTelefone[] = [];
 
   colunas: Array<PoTableColumn> = [
     {property: 'nome', label: 'Nome'},
@@ -44,6 +47,23 @@ export class ClienteComponent implements OnInit {
       ]
     }
   ]
+  colunasTelefones: Array<PoTableColumn> = [
+    {property: 'telefone', label: 'Telefone'},
+    {
+      property: 'acoes',
+      label: 'Ações',
+      type: 'icon',
+      sortable: false,
+      icons: [
+        {
+          action: this.deleteTelefone.bind(this),
+          icon: 'po-icon-delete',
+          tooltip: 'Excluir Telefone',
+          value: 'excluir'
+        }
+      ]
+    }
+  ];
 
   constructor(private clienteService: ClienteService, private formBuilder: FormBuilder) {
   }
@@ -83,12 +103,11 @@ export class ClienteComponent implements OnInit {
 
   }
 
-  deleteTelefone(i: number) {
+  deleteTelefone(telefone: ClienteTelefone) {
 
   }
 
   addtelefone() {
-    const phonesFormArray = this.formCriarCliente.get('telefones') as FormArray;
-    phonesFormArray.push(this.criarFormInclusaoTelefone(''));
+    this.telefones = this.formCriarCliente.get('telefones')?.value;
   }
 }
